@@ -1,0 +1,10 @@
+name: webgl_game
+dependencies:
+  browser: any
+  angular: any
+  vector_math: any
+  box2d: any
+  browser_detect: any
+
+transformers:
+- angular

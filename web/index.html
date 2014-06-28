@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    html, body {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .restart-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .debug-window {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .ng-hide {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+<div ctrl>
+  <canvas id="main-canvas" width="800" height="600"></canvas>
+
+  <div class="debug-window">
+    <label>
+      <input type="checkbox" ng-model="ctrl.skipFrame">
+      frame skip
+    </label>
+    <br>
+    <label>
+      <input type="checkbox" ng-model="ctrl.mouseMode">
+      use mouse
+    </label>
+    <br>
+    <label>
+      <input ng-model="visibleDebugInfo" type="checkbox">
+      show debug info
+    </label>
+    <br>
+    <div ng-show="visibleDebugInfo" class="ng-hide">
+      <div>Light: {{ctrl.light.x}}, {{ctrl.light.y}}, {{ctrl.light.z}}</div>
+      <div>Gravity: {{ctrl.gravity.x}}, {{ctrl.gravity.y}}</div>
+      <div>Mouse: {{ctrl.mouse.x}}, {{ctrl.mouse.y}}</div>
+      <div>DeviceMotion: {{ctrl.deviceMotion.x}}, {{ctrl.deviceMotion.y}}, {{ctrl.deviceMotion.z}}</div>
+    </div>
+  </div>
+
+  <button class="restart-button" ng-click="ctrl.restart()">restart</button>
+</div>
+<script src="index.dart" type="application/dart"></script>
+<script src="packages/browser/dart.js"></script>
+</body>
+</html>
